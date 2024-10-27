@@ -57,6 +57,7 @@ enum {
   QWERTY,
   FUN,
   UPPER,
+  ARROW,
   WM
 };
 
@@ -67,25 +68,25 @@ KEYMAPS(
        Key_Q   ,Key_W   ,Key_E       ,Key_R         ,Key_T
       ,Key_A   ,Key_S   ,Key_D       ,Key_F         ,Key_G
       ,Key_Z   ,Key_X   ,Key_C       ,Key_V         ,Key_B         ,Key_Backtick
-      ,Key_Esc ,Key_Tab ,Key_LeftAlt ,Key_Esc    ,CTL_T(Backspace) ,ML(LeftGui, WM)
+      ,___ ,___ ,Key_LeftAlt ,LT(ARROW, Tab)    ,CTL_T(Backspace) ,Key_Escape
 
                        ,Key_Y     ,Key_U      ,Key_I     ,Key_O      ,Key_P
                        ,Key_H     ,Key_J      ,Key_K     ,Key_L      ,Key_Semicolon
       ,Key_Backslash   ,Key_N     ,Key_M      ,Key_Comma ,Key_Period ,Key_Slash
-      ,Key_Enter ,SFT_T(Space) ,MO(FUN)    ,Key_Minus ,Key_Quote  ,Key_Enter
+      ,LT(FUN,Enter) ,SFT_T(Space) ,LSHIFT(Key_Minus)    ,Key_Minus ,Key_Quote  ,Key_Enter
   ),
 
   [FUN] = KEYMAP_STACKED
   (
        Key_Exclamation ,Key_At           ,Key_Hash   ,Key_Dollar           ,Key_Percent
       ,Key_1   ,Key_2    ,Key_3 ,Key_4       ,Key_5
-      ,Key_LeftBracket ,Key_RightBracket ,Key_Hash      ,Key_LeftCurlyBracket ,Key_RightCurlyBracket ,Key_Caret
-      ,TG(UPPER)       ,Key_Insert       ,Key_LeftGui   ,Key_LeftShift        ,Key_Delete         ,Key_LeftControl
+      ,Key_LeftBracket ,Key_RightBracket ,Key_LeftCurlyBracket ,Key_RightCurlyBracket ,Key_LeftParen ,Key_RightParen
+      ,TG(UPPER)       ,Key_Insert       ,Key_LeftGui   ,Key_LeftShift        ,Key_LeftControl ,___
 
-                   ,Key_Caret   ,Key_And ,Key_Star      ,Key_LeftParen ,Key_RightParen
+                   ,Key_Caret   ,Key_And ,Key_Star      ,Key_Minus ,Key_Plus
                    ,Key_6 ,Key_7 ,Key_8      ,Key_9 ,Key_0
-      ,Key_And     ,Key_Star     ,___ ,___      ,___ ,Key_Plus
-      ,Key_LeftAlt ,Key_Space    ,___   ,Key_Period ,Key_0 ,Key_Equals
+      ,___     ,___     ,Key_Equals ,___      ,___ ,Key_Plus
+      ,Key_LeftAlt ,Key_Space    ,___   ,Key_Period ,___ ,Key_Equals
    ),
 
   [UPPER] = KEYMAP_STACKED
@@ -101,6 +102,19 @@ KEYMAPS(
       ,___      ,___           ,MoveToLayer(QWERTY) ,Key_PrintScreen ,Key_ScrollLock ,Consumer_PlaySlashPause
    ),
 
+   [ARROW] = KEYMAP_STACKED
+   (
+       Key_Insert            ,Key_Home                 ,Key_UpArrow   ,Key_End        ,Key_PageUp
+      ,Key_Delete            ,Key_LeftArrow            ,Key_DownArrow ,Key_RightArrow ,Key_PageDown
+      ,M(MACRO_VERSION_INFO) ,Consumer_VolumeIncrement ,XXX           ,XXX            ,___ ,___
+      ,MoveToLayer(QWERTY)   ,Consumer_VolumeDecrement ,___           ,___            ,___ ,___
+
+                ,Key_Home   ,Key_PageDown    ,Key_PageUp          ,Key_End         ,___
+                ,Key_LeftArrow ,Key_DownArrow              ,Key_UpArrow          ,Key_RightArrow ,___
+      ,___      ,XXX           ,Key_F1              ,Key_F2          ,Key_F3         ,Key_F12
+      ,___      ,___           ,MoveToLayer(QWERTY) ,Key_PrintScreen ,Key_ScrollLock ,Consumer_PlaySlashPause
+   ),
+
    [WM] = KEYMAP_STACKED
    (
         Key_Q   ,Key_W   ,Key_E       ,Key_R         ,Key_T
@@ -111,7 +125,7 @@ KEYMAPS(
                         ,Key_Y     ,Key_U      ,Key_I     ,Key_O      ,Key_P
                         ,Key_H     ,Key_J      ,Key_K     ,Key_L      ,Key_Semicolon
        ,Key_Backslash   ,Key_N     ,Key_M      ,Key_Comma ,Key_Period ,Key_Slash
-       ,___             ,Key_Space ,MO(FUN)    ,Key_Minus ,Key_Quote  ,Key_Enter
+       ,___             ,SFT_T(Space) ,MO(FUN)    ,Key_Minus ,Key_Quote  ,Key_Enter
    )
 )
 // clang-format on
@@ -209,6 +223,10 @@ const macro_t *macroAction(uint8_t macro_id, KeyEvent &event) {
 }
 
 void setup() {
+  QUKEYS(
+    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 5), ML(LeftGui, WM)),      // Q/cmd+1
+  )
+
   Kaleidoscope.setup();
   EEPROMKeymap.setup(9);
 
