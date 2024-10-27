@@ -56,7 +56,8 @@ enum {
 enum {
   QWERTY,
   FUN,
-  UPPER
+  UPPER,
+  WM
 };
 
 // clang-format off
@@ -65,13 +66,13 @@ KEYMAPS(
   (
        Key_Q   ,Key_W   ,Key_E       ,Key_R         ,Key_T
       ,Key_A   ,Key_S   ,Key_D       ,Key_F         ,Key_G
-      ,Key_Z   ,Key_X   ,Key_C       ,Key_V         ,Key_B, Key_Backtick
-      ,Key_Esc ,Key_Tab ,Key_LeftGui ,Key_LeftShift ,Key_Backspace ,Key_LeftControl
+      ,Key_Z   ,Key_X   ,Key_C       ,Key_V         ,Key_B         ,Key_Backtick
+      ,Key_Esc ,Key_Tab ,Key_LeftAlt ,SFT_T(Esc)    ,Key_Backspace ,CTL_T(Enter)
 
-                     ,Key_Y     ,Key_U      ,Key_I     ,Key_O      ,Key_P
-                     ,Key_H     ,Key_J      ,Key_K     ,Key_L      ,Key_Semicolon
-       ,Key_Backslash,Key_N     ,Key_M      ,Key_Comma ,Key_Period ,Key_Slash
-       ,Key_LeftAlt  ,Key_Space ,MO(FUN)    ,Key_Minus ,Key_Quote  ,Key_Enter
+                       ,Key_Y     ,Key_U      ,Key_I     ,Key_O      ,Key_P
+                       ,Key_H     ,Key_J      ,Key_K     ,Key_L      ,Key_Semicolon
+      ,Key_Backslash   ,Key_N     ,Key_M      ,Key_Comma ,Key_Period ,Key_Slash
+      ,ML(LeftGui, WM) ,Key_Space ,MO(FUN)    ,Key_Minus ,Key_Quote  ,Key_Enter
   ),
 
   [FUN] = KEYMAP_STACKED
@@ -98,6 +99,19 @@ KEYMAPS(
                 ,Key_DownArrow ,Key_F4              ,Key_F5          ,Key_F6         ,Key_F11
       ,___      ,XXX           ,Key_F1              ,Key_F2          ,Key_F3         ,Key_F12
       ,___      ,___           ,MoveToLayer(QWERTY) ,Key_PrintScreen ,Key_ScrollLock ,Consumer_PlaySlashPause
+   ),
+
+   [WM] = KEYMAP_STACKED
+   (
+        Key_Q   ,Key_W   ,Key_E       ,Key_R         ,Key_T
+       ,Key_1   ,Key_2   ,Key_3       ,Key_4         ,Key_5
+       ,Key_Z   ,Key_X   ,Key_C       ,Key_V         ,Key_B         ,Key_Backtick
+       ,Key_Esc ,Key_Tab ,Key_LeftAlt ,SFT_T(Esc) ,Key_Backspace    ,CTL_T(Enter)
+ 
+                        ,Key_Y     ,Key_U      ,Key_I     ,Key_O      ,Key_P
+                        ,Key_H     ,Key_J      ,Key_K     ,Key_L      ,Key_Semicolon
+       ,Key_Backslash   ,Key_N     ,Key_M      ,Key_Comma ,Key_Period ,Key_Slash
+       ,___             ,Key_Space ,MO(FUN)    ,Key_Minus ,Key_Quote  ,Key_Enter
    )
 )
 // clang-format on
