@@ -226,6 +226,8 @@ void setup() {
   QUKEYS(
     kaleidoscope::plugin::Qukey(0, KeyAddr(3, 5), ML(LeftGui, WM)),      // Q/cmd+1
   )
+  Qukeys.setOverlapThreshold(40);
+  Qukeys.setMaxIntervalForTapRepeat(0);
 
   Kaleidoscope.setup();
   EEPROMKeymap.setup(9);
