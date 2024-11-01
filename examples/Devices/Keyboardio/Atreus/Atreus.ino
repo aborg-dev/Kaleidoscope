@@ -66,26 +66,26 @@ KEYMAPS(
   [QWERTY] = KEYMAP_STACKED
   (
        Key_Q   ,Key_W   ,Key_E       ,Key_R         ,Key_T
-      ,Key_A   ,Key_S   ,Key_D       ,Key_F         ,Key_G
+      ,Key_A   ,Key_S   ,Key_D       ,CTL_T(F)         ,Key_G
       ,Key_Z   ,Key_X   ,Key_C       ,Key_V         ,Key_B         ,Key_Backtick
-      ,___ ,___ ,Key_LeftAlt ,LT(ARROW, Tab)    ,CTL_T(Backspace) ,Key_Escape
+      ,___ ,___ ,Key_LeftAlt ,LT(ARROW, Escape)    ,LT(FUN, Backspace) ,Key_Enter
 
                        ,Key_Y     ,Key_U      ,Key_I     ,Key_O      ,Key_P
-                       ,Key_H     ,Key_J      ,Key_K     ,Key_L      ,Key_Semicolon
+                       ,Key_H     ,CTL_T(J)   ,Key_K     ,Key_L      ,Key_Semicolon
       ,Key_Backslash   ,Key_N     ,Key_M      ,Key_Comma ,Key_Period ,Key_Slash
-      ,LT(FUN,Enter) ,SFT_T(Space) ,LSHIFT(Key_Minus)    ,Key_Minus ,Key_Quote  ,Key_Enter
+      ,___             ,SFT_T(Space) ,LSHIFT(Key_Minus)    ,Key_Minus ,Key_Quote  ,Key_Enter
   ),
 
   [FUN] = KEYMAP_STACKED
   (
-       Key_Exclamation ,Key_At           ,Key_Hash   ,Key_Dollar           ,Key_Percent
-      ,Key_1   ,Key_2    ,Key_3 ,Key_4       ,Key_5
-      ,Key_LeftBracket ,Key_RightBracket ,Key_LeftCurlyBracket ,Key_RightCurlyBracket ,Key_LeftParen ,Key_RightParen
+       Key_And ,Key_7           ,Key_8   ,Key_9, Key_Plus
+      ,Key_Equals   ,Key_4    ,Key_5 ,Key_6       ,Key_Minus
+      ,Key_0 ,Key_1 ,Key_2 ,Key_3 ,Key_Star ,Key_Slash
       ,TG(UPPER)       ,Key_Insert       ,Key_LeftGui   ,Key_LeftShift        ,Key_LeftControl ,___
 
-                   ,Key_Caret   ,Key_And ,Key_Star      ,Key_Minus ,Key_Plus
-                   ,Key_6 ,Key_7 ,Key_8      ,Key_9 ,Key_0
-      ,___     ,___     ,Key_Equals ,___      ,___ ,Key_Plus
+                   ,Key_Caret   ,Key_Dollar ,Key_Star      ,Key_Minus ,Key_Plus
+                   ,Key_Backspace ,Key_LeftParen ,Key_LeftBracket      ,Key_LeftCurlyBracket ,___
+      ,___     ,___     ,Key_RightParen ,Key_RightBracket      ,Key_RightCurlyBracket ,___
       ,Key_LeftAlt ,Key_Space    ,___   ,Key_Period ,___ ,Key_Equals
    ),
 
@@ -224,10 +224,9 @@ const macro_t *macroAction(uint8_t macro_id, KeyEvent &event) {
 
 void setup() {
   QUKEYS(
-    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 5), ML(LeftGui, WM)),      // Q/cmd+1
+    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 5), ML(LeftGui, WM)),
   )
   Qukeys.setOverlapThreshold(40);
-  Qukeys.setMaxIntervalForTapRepeat(0);
 
   Kaleidoscope.setup();
   EEPROMKeymap.setup(9);
