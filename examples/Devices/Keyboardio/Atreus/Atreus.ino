@@ -34,6 +34,17 @@
 #include "Kaleidoscope-SpaceCadet.h"
 #include "Kaleidoscope-DynamicMacros.h"
 #include "Kaleidoscope-LayerNames.h"
+#include "Kaleidoscope-MagicCombo.h"
+
+enum {
+  ESCAPE_COMBO
+};
+
+void escapeCombo(uint8_t combo_index) {
+  Macros.tap(Key_Escape);
+}
+
+USE_MAGIC_COMBOS([ESCAPE_COMBO] = {.action = escapeCombo, .keys = {R1C8, R1C9}});
 
 #define MO(n) ShiftToLayer(n)
 #define TG(n) LockLayer(n)
@@ -69,7 +80,7 @@ KEYMAPS(
        Key_Q   ,Key_W   ,Key_E       ,Key_R         ,Key_T
       ,Key_A   ,Key_S   ,Key_D       ,CTL_T(F)         ,Key_G
       ,Key_Z   ,Key_X   ,Key_C       ,Key_V         ,Key_B         ,Key_Backtick
-      ,___ ,___ ,Key_LeftAlt ,Key_Tab    ,LT(FUN, Backspace) ,Key_Escape
+      ,___ ,___ ,Key_LeftAlt ,Key_Escape    ,LT(FUN, Backspace) ,Key_Tab
 
                        ,Key_Y     ,Key_U      ,Key_I     ,Key_O      ,Key_P
                        ,Key_H     ,CTL_T(J)   ,Key_K     ,Key_L      ,Key_Semicolon
@@ -190,12 +201,12 @@ KALEIDOSCOPE_INIT_PLUGINS(
 
   // The MouseKeys plugin lets you add keys to your keymap which move the mouse.
   MouseKeys,
-  MouseKeysConfig  //,
+  MouseKeysConfig,
 
   // The MagicCombo plugin lets you use key combinations to trigger custom
   // actions - a bit like Macros, but triggered by pressing multiple keys at the
   // same time.
-  // MagicCombo,
+  MagicCombo //,
 
   // Enables the GeminiPR Stenography protocol. Unused by default, but with the
   // plugin enabled, it becomes configurable - and then usable - via Chrysalis.
