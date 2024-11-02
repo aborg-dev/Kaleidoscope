@@ -68,9 +68,8 @@ enum {
 enum {
   QWERTY,
   FUN,
-  UPPER,
   NAV,
-  WM
+  DESKTOP
 };
 
 // clang-format off
@@ -78,40 +77,27 @@ KEYMAPS(
   [QWERTY] = KEYMAP_STACKED
   (
        Key_Q   ,Key_W   ,Key_E       ,Key_R         ,Key_T
-      ,Key_A   ,Key_S   ,Key_D       ,CTL_T(F)         ,Key_G
-      ,Key_Z   ,Key_X   ,Key_C       ,Key_V         ,Key_B         ,Key_Backtick
-      ,___ ,___ ,Key_LeftAlt ,Key_Escape    ,LT(FUN, Backspace) ,Key_Tab
+      ,Key_A   ,Key_S   ,Key_D       ,CTL_T(F)      ,Key_G
+      ,Key_Z   ,Key_X   ,Key_C       ,Key_V         ,Key_B              ,Key_Backtick
+      ,___     ,___     ,Key_LeftAlt ,Key_Escape    ,LT(FUN, Backspace) ,Key_Tab
 
-                       ,Key_Y     ,Key_U      ,Key_I     ,Key_O      ,Key_P
-                       ,Key_H     ,CTL_T(J)   ,Key_K     ,Key_L      ,Key_Semicolon
-      ,Key_Backslash   ,Key_N     ,Key_M      ,Key_Comma ,Key_Period ,Key_Slash
-      ,LT(NAV, Enter)             ,SFT_T(Space) ,Key_Underscore    ,Key_Minus ,Key_Quote  ,Key_Enter
+                       ,Key_Y        ,Key_U          ,Key_I          ,Key_O      ,Key_P
+                       ,Key_H        ,CTL_T(J)       ,Key_K          ,Key_L      ,Key_Semicolon
+      ,Key_Backslash   ,Key_N        ,Key_M          ,Key_Comma      ,Key_Period ,Key_Slash
+      ,LT(NAV, Enter)  ,SFT_T(Space) ,Key_Underscore ,Key_Minus      ,Key_Quote  ,___
   ),
 
   [FUN] = KEYMAP_STACKED
   (
-       Key_And ,Key_7           ,Key_8   ,Key_9, Key_Plus
-      ,Key_Equals   ,Key_4    ,Key_5 , CTL_T(6)       ,Key_Minus
-      ,Key_0 ,Key_1 ,Key_2 ,Key_3 ,Key_Star ,Key_Slash
-      ,TG(UPPER)       ,Key_Insert       ,Key_LeftGui   ,Key_LeftShift        ,Key_LeftControl ,___
+       Key_Caret       ,Key_At                  ,Key_Hash         ,Key_Dollar         ,Key_Percent
+      ,Key_Exclamation ,Key_LeftCurlyBracket    ,Key_LeftBracket  ,CTL_T(LeftParen)   ,Key_Underscore
+      ,Key_And         ,Key_RightCurlyBracket   ,Key_RightBracket ,Key_RightParen     ,Key_Quote      ,___
+      ,___             ,___                     ,___              ,___                ,___            ,___
       
-               ,Key_Exclamation ,Key_Dollar       ,Key_At            ,Key_Caret            ,Key_Hash
-               ,Key_Underscore   ,CTL_T(LeftParen) ,Key_LeftBracket   ,Key_LeftCurlyBracket ,Key_Quote
-      ,___     ,___     ,Key_RightParen ,Key_RightBracket      ,Key_RightCurlyBracket ,___
-      ,Key_LeftAlt ,Key_Space    ,___   ,Key_Period ,___ ,Key_Equals
-   ),
-
-  [UPPER] = KEYMAP_STACKED
-  (
-       Key_Insert            ,Key_Home                 ,Key_UpArrow   ,Key_End        ,Key_PageUp
-      ,Key_Delete            ,Key_LeftArrow            ,Key_DownArrow ,Key_RightArrow ,Key_PageDown
-      ,M(MACRO_VERSION_INFO) ,Consumer_VolumeIncrement ,XXX           ,XXX            ,___ ,___
-      ,MoveToLayer(QWERTY)   ,Consumer_VolumeDecrement ,___           ,___            ,___ ,___
-
-                ,Key_UpArrow   ,Key_F7              ,Key_F8          ,Key_F9         ,Key_F10
-                ,Key_DownArrow ,Key_F4              ,Key_F5          ,Key_F6         ,Key_F11
-      ,___      ,XXX           ,Key_F1              ,Key_F2          ,Key_F3         ,Key_F12
-      ,___      ,___           ,MoveToLayer(QWERTY) ,Key_PrintScreen ,Key_ScrollLock ,Consumer_PlaySlashPause
+                 ,Key_Star     ,Key_7    ,Key_8   ,Key_9  ,Key_Plus
+                 ,Key_Equals   ,CTL_T(4) ,Key_5   ,Key_6  ,Key_Minus
+      ,___       ,Key_0        ,Key_1    ,Key_2   ,Key_3  ,Key_Slash
+      ,Key_Enter ,Key_Space    ,___      ,___     ,___    ,___
    ),
 
    [NAV] = KEYMAP_STACKED
@@ -127,12 +113,12 @@ KEYMAPS(
       ,___      ,___           ,MoveToLayer(QWERTY) ,Key_PrintScreen ,Key_ScrollLock ,Consumer_PlaySlashPause
    ),
 
-   [WM] = KEYMAP_STACKED
+   [DESKTOP] = KEYMAP_STACKED
    (
         Key_Q   ,Key_W   ,Key_E       ,Key_R         ,Key_T
        ,Key_1   ,Key_2   ,Key_3       ,Key_4         ,Key_5
-       ,Key_Z   ,Key_X   ,Key_C       ,Key_V         ,Key_B         ,Key_Backtick
-       ,Key_Esc ,Key_Tab ,Key_LeftAlt ,SFT_T(Esc) ,Key_Backspace    ,CTL_T(Enter)
+       ,Key_Z   ,Key_X   ,Key_C       ,Key_V         ,Key_B           ,Key_Backtick
+       ,Key_Esc ,Key_Tab ,Key_LeftAlt ,SFT_T(Esc)    ,Key_Backspace   ,CTL_T(Enter)
  
                         ,Key_Y     ,Key_U      ,Key_I     ,Key_O      ,Key_P
                         ,Key_H     ,Key_J      ,Key_K     ,Key_L      ,Key_Semicolon
@@ -236,7 +222,7 @@ const macro_t *macroAction(uint8_t macro_id, KeyEvent &event) {
 
 void setup() {
   QUKEYS(
-    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 5), ML(LeftGui, WM)),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 5), ML(LeftGui, DESKTOP)),
   )
   Qukeys.setOverlapThreshold(40);
 
