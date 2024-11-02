@@ -52,6 +52,7 @@ enum {
 #define Key_And         LSHIFT(Key_7)
 #define Key_Star        LSHIFT(Key_8)
 #define Key_Plus        LSHIFT(Key_Equals)
+#define Key_Underscore  LSHIFT(Key_Minus)
 
 enum {
   QWERTY,
@@ -68,12 +69,12 @@ KEYMAPS(
        Key_Q   ,Key_W   ,Key_E       ,Key_R         ,Key_T
       ,Key_A   ,Key_S   ,Key_D       ,CTL_T(F)         ,Key_G
       ,Key_Z   ,Key_X   ,Key_C       ,Key_V         ,Key_B         ,Key_Backtick
-      ,___ ,___ ,Key_LeftAlt ,LT(ARROW, Escape)    ,LT(FUN, Backspace) ,Key_Enter
+      ,___ ,___ ,Key_LeftAlt ,LT(ARROW, Tab)    ,LT(FUN, Backspace) ,Key_Escape
 
                        ,Key_Y     ,Key_U      ,Key_I     ,Key_O      ,Key_P
                        ,Key_H     ,CTL_T(J)   ,Key_K     ,Key_L      ,Key_Semicolon
       ,Key_Backslash   ,Key_N     ,Key_M      ,Key_Comma ,Key_Period ,Key_Slash
-      ,___             ,SFT_T(Space) ,LSHIFT(Key_Minus)    ,Key_Minus ,Key_Quote  ,Key_Enter
+      ,Key_Enter             ,SFT_T(Space) ,Key_Underscore    ,Key_Minus ,Key_Quote  ,Key_Enter
   ),
 
   [FUN] = KEYMAP_STACKED
@@ -82,8 +83,8 @@ KEYMAPS(
       ,Key_Equals   ,Key_4    ,Key_5 ,Key_6       ,Key_Minus
       ,Key_0 ,Key_1 ,Key_2 ,Key_3 ,Key_Star ,Key_Slash
       ,TG(UPPER)       ,Key_Insert       ,Key_LeftGui   ,Key_LeftShift        ,Key_LeftControl ,___
-
-                   ,Key_Caret   ,Key_Dollar ,Key_Star      ,Key_Minus ,Key_Plus
+      
+                   ,Key_Exclamation ,Key_Dollar ,Key_At      ,Key_Caret ,Key_Hash
                    ,Key_Backspace ,Key_LeftParen ,Key_LeftBracket      ,Key_LeftCurlyBracket ,___
       ,___     ,___     ,Key_RightParen ,Key_RightBracket      ,Key_RightCurlyBracket ,___
       ,Key_LeftAlt ,Key_Space    ,___   ,Key_Period ,___ ,Key_Equals
