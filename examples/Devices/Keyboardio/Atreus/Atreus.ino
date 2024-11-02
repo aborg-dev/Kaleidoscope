@@ -108,11 +108,11 @@ KEYMAPS(
        ___            ,___                 ,Key_mouseUp   ,___        ,___
       ,___            ,Key_mouseL            ,Key_mouseDn ,Key_mouseR ,___
       ,M(MACRO_VERSION_INFO) ,Consumer_VolumeIncrement ,XXX           ,XXX            ,___ ,___
-      ,___                   ,Consumer_VolumeDecrement ,___           ,Key_mouseBtnL, Key_mouseBtnM, Key_mouseBtnR
+      ,___                   ,Consumer_VolumeDecrement ,___           ,Key_mouseBtnM, Key_mouseBtnL, Key_mouseBtnR
 
                 ,Key_Home   ,Key_PageDown    ,Key_PageUp          ,Key_End         ,___
                 ,Key_LeftArrow ,Key_DownArrow              ,Key_UpArrow          ,Key_RightArrow ,___
-      ,___      ,XXX           ,Key_F1              ,Key_F2          ,Key_F3         ,Key_F12
+      ,___      ,XXX           ,___              ,___          ,___         ,___
       ,___      ,___           ,MoveToLayer(QWERTY) ,Key_PrintScreen ,Key_ScrollLock ,Consumer_PlaySlashPause
    ),
 
