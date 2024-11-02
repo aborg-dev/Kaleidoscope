@@ -58,7 +58,7 @@ enum {
   QWERTY,
   FUN,
   UPPER,
-  ARROW,
+  NAV,
   WM
 };
 
@@ -69,23 +69,23 @@ KEYMAPS(
        Key_Q   ,Key_W   ,Key_E       ,Key_R         ,Key_T
       ,Key_A   ,Key_S   ,Key_D       ,CTL_T(F)         ,Key_G
       ,Key_Z   ,Key_X   ,Key_C       ,Key_V         ,Key_B         ,Key_Backtick
-      ,___ ,___ ,Key_LeftAlt ,LT(ARROW, Tab)    ,LT(FUN, Backspace) ,Key_Escape
+      ,___ ,___ ,Key_LeftAlt ,Key_Tab    ,LT(FUN, Backspace) ,Key_Escape
 
                        ,Key_Y     ,Key_U      ,Key_I     ,Key_O      ,Key_P
                        ,Key_H     ,CTL_T(J)   ,Key_K     ,Key_L      ,Key_Semicolon
       ,Key_Backslash   ,Key_N     ,Key_M      ,Key_Comma ,Key_Period ,Key_Slash
-      ,Key_Enter             ,SFT_T(Space) ,Key_Underscore    ,Key_Minus ,Key_Quote  ,Key_Enter
+      ,LT(NAV, Enter)             ,SFT_T(Space) ,Key_Underscore    ,Key_Minus ,Key_Quote  ,Key_Enter
   ),
 
   [FUN] = KEYMAP_STACKED
   (
        Key_And ,Key_7           ,Key_8   ,Key_9, Key_Plus
-      ,Key_Equals   ,Key_4    ,Key_5 ,Key_6       ,Key_Minus
+      ,Key_Equals   ,Key_4    ,Key_5 , CTL_T(6)       ,Key_Minus
       ,Key_0 ,Key_1 ,Key_2 ,Key_3 ,Key_Star ,Key_Slash
       ,TG(UPPER)       ,Key_Insert       ,Key_LeftGui   ,Key_LeftShift        ,Key_LeftControl ,___
       
-                   ,Key_Exclamation ,Key_Dollar ,Key_At      ,Key_Caret ,Key_Hash
-                   ,Key_Backspace ,Key_LeftParen ,Key_LeftBracket      ,Key_LeftCurlyBracket ,___
+               ,Key_Exclamation ,Key_Dollar       ,Key_At            ,Key_Caret            ,Key_Hash
+               ,Key_Underscore   ,CTL_T(LeftParen) ,Key_LeftBracket   ,Key_LeftCurlyBracket ,Key_Quote
       ,___     ,___     ,Key_RightParen ,Key_RightBracket      ,Key_RightCurlyBracket ,___
       ,Key_LeftAlt ,Key_Space    ,___   ,Key_Period ,___ ,Key_Equals
    ),
@@ -103,12 +103,12 @@ KEYMAPS(
       ,___      ,___           ,MoveToLayer(QWERTY) ,Key_PrintScreen ,Key_ScrollLock ,Consumer_PlaySlashPause
    ),
 
-   [ARROW] = KEYMAP_STACKED
+   [NAV] = KEYMAP_STACKED
    (
-       Key_Insert            ,Key_Home                 ,Key_UpArrow   ,Key_End        ,Key_PageUp
-      ,Key_Delete            ,Key_LeftArrow            ,Key_DownArrow ,Key_RightArrow ,Key_PageDown
+       ___            ,___                 ,Key_mouseUp   ,___        ,___
+      ,___            ,Key_mouseL            ,Key_mouseDn ,Key_mouseR ,___
       ,M(MACRO_VERSION_INFO) ,Consumer_VolumeIncrement ,XXX           ,XXX            ,___ ,___
-      ,MoveToLayer(QWERTY)   ,Consumer_VolumeDecrement ,___           ,___            ,___ ,___
+      ,___                   ,Consumer_VolumeDecrement ,___           ,Key_mouseBtnL, Key_mouseBtnM, Key_mouseBtnR
 
                 ,Key_Home   ,Key_PageDown    ,Key_PageUp          ,Key_End         ,___
                 ,Key_LeftArrow ,Key_DownArrow              ,Key_UpArrow          ,Key_RightArrow ,___
