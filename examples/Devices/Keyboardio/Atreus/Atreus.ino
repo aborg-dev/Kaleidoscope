@@ -67,7 +67,7 @@ enum {
 
 enum {
   QWERTY,
-  FUN,
+  NUM,
   NAV,
   DESKTOP
 };
@@ -79,7 +79,7 @@ KEYMAPS(
        Key_Q   ,Key_W   ,Key_E       ,Key_R         ,Key_T
       ,Key_A   ,Key_S   ,Key_D       ,CTL_T(F)      ,Key_G
       ,Key_Z   ,Key_X   ,Key_C       ,Key_V         ,Key_B              ,Key_Backtick
-      ,___     ,___     ,Key_LeftAlt ,Key_Escape    ,LT(FUN, Backspace) ,Key_Tab
+      ,___     ,___     ,Key_LeftAlt ,Key_Escape    ,LT(NUM, Backspace) ,Key_Tab
 
                        ,Key_Y        ,Key_U          ,Key_I          ,Key_O      ,Key_P
                        ,Key_H        ,CTL_T(J)       ,Key_K          ,Key_L      ,Key_Semicolon
@@ -87,7 +87,7 @@ KEYMAPS(
       ,LT(NAV, Enter)  ,SFT_T(Space) ,Key_Underscore ,Key_Minus      ,Key_Quote  ,___
   ),
 
-  [FUN] = KEYMAP_STACKED
+  [NUM] = KEYMAP_STACKED
   (
        Key_Caret       ,Key_At                  ,Key_Hash         ,Key_Dollar         ,Key_Percent
       ,Key_Exclamation ,Key_LeftCurlyBracket    ,Key_LeftBracket  ,CTL_T(LeftParen)   ,Key_Underscore
@@ -120,10 +120,10 @@ KEYMAPS(
        ,Key_Z   ,Key_X   ,Key_C       ,Key_V         ,Key_B           ,Key_Backtick
        ,Key_Esc ,Key_Tab ,Key_LeftAlt ,SFT_T(Esc)    ,Key_Backspace   ,CTL_T(Enter)
  
-                        ,Key_Y     ,Key_U      ,Key_I     ,Key_O      ,Key_P
-                        ,Key_H     ,Key_J      ,Key_K     ,Key_L      ,Key_Semicolon
-       ,Key_Backslash   ,Key_N     ,Key_M      ,Key_Comma ,Key_Period ,Key_Slash
-       ,___             ,SFT_T(Space) ,MO(FUN)    ,Key_Minus ,Key_Quote  ,Key_Enter
+                        ,Key_Y        ,Key_U      ,Key_I     ,Key_O      ,Key_P
+                        ,Key_H        ,Key_J      ,Key_K     ,Key_L      ,Key_Semicolon
+       ,Key_Backslash   ,Key_N        ,Key_M      ,Key_Comma ,Key_Period ,Key_Slash
+       ,___             ,SFT_T(Space) ,MO(NUM)    ,Key_Minus ,Key_Quote  ,Key_Enter
    )
 )
 // clang-format on
