@@ -65,6 +65,7 @@ enum {
 #define Key_Plus        LSHIFT(Key_Equals)
 #define Key_Underscore  LSHIFT(Key_Minus)
 #define Key_Colon       LSHIFT(Key_Semicolon)
+#define Key_LangToggle  Key_RightControl
 
 enum {
   QWERTY,
@@ -84,8 +85,8 @@ KEYMAPS(
 
                        ,Key_Y        ,Key_U          ,Key_I          ,Key_O      ,Key_P
                        ,Key_H        ,CTL_T(J)       ,Key_K          ,Key_L      ,Key_Semicolon
-      ,Key_Backslash   ,Key_N        ,Key_M          ,Key_Comma      ,Key_Period ,Key_Quote
-      ,LT(NAV, Enter)  ,SFT_T(Space) ,___            ,___            ,___        ,___
+      ,Key_Backslash   ,Key_N        ,Key_M          ,Key_Comma      ,Key_Period ,Key_Slash
+      ,LT(NAV, Enter)  ,SFT_T(Space) ,Key_LangToggle ,___            ,Key_Quote  ,___
   ),
 
   [NUM] = KEYMAP_STACKED
@@ -225,7 +226,7 @@ void setup() {
   QUKEYS(
     kaleidoscope::plugin::Qukey(0, KeyAddr(3, 5), ML(LeftGui, DESKTOP)),
   )
-  Qukeys.setOverlapThreshold(40);
+  Qukeys.setOverlapThreshold(60);
 
   Kaleidoscope.setup();
   EEPROMKeymap.setup(9);
