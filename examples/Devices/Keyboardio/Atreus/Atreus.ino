@@ -65,7 +65,7 @@ enum {
 #define Key_Plus        LSHIFT(Key_Equals)
 #define Key_Underscore  LSHIFT(Key_Minus)
 #define Key_Colon       LSHIFT(Key_Semicolon)
-#define Key_LangToggle  Key_RightControl
+#define Key_LangToggle  Key_RightAlt
 
 enum {
   QWERTY,
@@ -98,7 +98,7 @@ KEYMAPS(
       
                                ,Key_Star     ,Key_7    ,Key_8   ,Key_9  ,Key_Plus
                                ,Key_Equals   ,CTL_T(4) ,Key_5   ,Key_6  ,Key_Minus
-      ,___                     ,Key_0        ,Key_1    ,Key_2   ,Key_3  ,Key_Slash
+      ,___                     ,Key_0        ,Key_1    ,Key_2   ,Key_3  ,Key_Quote
       ,Key_Enter               ,SFT_T(Space) ,___      ,___     ,___    ,___
    ),
 
