@@ -65,7 +65,7 @@ enum {
 #define Key_Plus        LSHIFT(Key_Equals)
 #define Key_Underscore  LSHIFT(Key_Minus)
 #define Key_Colon       LSHIFT(Key_Semicolon)
-#define Key_LangToggle  Key_RightAlt
+#define Key_LangToggle  LSHIFT(Key_RightAlt)
 
 enum {
   QWERTY,
